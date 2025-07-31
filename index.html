@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สำหรับaฟ่าง 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            width: 100%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .heart {
+            font-size: 3rem;
+            color: #ff6b9d;
+            animation: heartbeat 1.5s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            font-weight: 300;
+        }
+
+        .message {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .comfort-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .comfort-btn {
+            background: linear-gradient(45deg, #ff6b9d, #c44569);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(196, 69, 105, 0.3);
+        }
+
+        .comfort-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(196, 69, 105, 0.4);
+            background: linear-gradient(45deg, #c44569, #ff6b9d);
+        }
+
+        .comfort-btn:active {
+            transform: scale(0.95) translateY(-1px);
+            transition: transform 0.1s ease;
+        }
+
+        .comfort-btn.clicked {
+            animation: buttonPulse 0.6s ease;
+        }
+
+        @keyframes buttonPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(255, 107, 157, 0.6); }
+            100% { transform: scale(1); }
+        }
+
+        .quotes {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .quotes.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .quotes.hide {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+
+        .quote {
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .music-note {
+            position: fixed;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 20px;
+            animation: musicFloat 8s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes musicFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .energy-bar {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            height: 20px;
+            margin: 20px 0;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .energy-fill {
+            background: linear-gradient(90deg, #ff6b9d, #ffd93d);
+            height: 100%;
+            border-radius: 50px;
+            transition: width 2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .comfort-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .comfort-btn {
+                width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <div class="heart">💖</div>
+        <h1>สำหรับคนที่รักของฉัน</h1>
+        <div class="message">
+            เหนื่อยแล้วใช่มั้ย? ขอให้นี่เป็นที่พักใจเล็กๆ ได้มั้ย 💕<br>
+        </div>
+
+        <div class="energy-bar">
+            <div class="energy-fill" id="energyFill" style="width: 0%">กำลังชาร์จพลังงาน... 🔋</div>
+        </div>
+
+        <div class="comfort-buttons">
+            <button class="comfort-btn" onclick="showLove()">💕 ส่งความรัก</button>
+            <button class="comfort-btn" onclick="giveHug()">🤗 กอดหน่อย</button>
+            <button class="comfort-btn" onclick="encouragement()">✨ กำลังใจ</button>
+            <button class="comfort-btn" onclick="playMusic()">🎵 เพลงเบาๆ</button>
+            <button class="comfort-btn" onclick="restTime()">😴 พักผ่อน</button>
+        </div>
+
+        <div class="quotes" id="quotesSection">
+            <div class="quote" id="currentQuote"></div>
+        </div>
+    </div>
+
+    <script>
+        // สร้างดาวบนฟ้า
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // สร้างโน้ตเพลง
+        function createMusicNote() {
+            const notes = ['♪', '♫', '♬', '♩'];
+            const note = document.createElement('div');
+            note.className = 'music-note';
+            note.textContent = notes[Math.floor(Math.random() * notes.length)];
+            note.style.left = Math.random() * 100 + '%';
+            note.style.animationDuration = (Math.random() * 3 + 5) + 's';
+            document.body.appendChild(note);
+            
+            setTimeout(() => {
+                document.body.removeChild(note);
+            }, 8000);
+        }
+
+        // ข้อความความรัก
+        const loveMessages = [
+            "ฟ่างคือคนพิเศษที่สุดของเนส 💕",
+            "ขอให้รู้ว่าฉันภูมิใจในตัวเธอมากๆ 🌟",
+            "เธอแข็งแกร่งกว่าที่คิดนะ และฉันจะอยู่ข้างๆ เสมอ 💪",
+            "รักนะ 🌙⭐"
+        ];
+
+        const hugMessages = [
+            "🤗 กอดแน่นๆ ส่งความอบอุ่นให้",
+            "💕 ส่งอ้อมกอดเสมือนจริงผ่านหน้าจอ",
+            "🤲 กอดใหญ่ๆ"
+        ];
+
+        const encouragementMessages = [
+            "ฟ่างทำได้! เธอเก่งมากแล้ว! 💪",
+            "พรุ่งนี้จะดีกว่าวันนี้แน่นอน 🌅",
+            "เหนื่อยได้ แต่อย่าได้ยอมแพ้นะ ✨",
+            "เธอมีพลังมากกว่าที่คิดไว้ 🔥",
+        ];
+
+        // ฟังก์ชันต่างๆ
+        function addButtonAnimation(button) {
+            button.classList.add('clicked');
+            setTimeout(() => {
+                button.classList.remove('clicked');
+            }, 600);
+        }
+
+        function showLove() {
+            const button = event.target;
+            addButtonAnimation(button);
+            showQuote(loveMessages[Math.floor(Math.random() * loveMessages.length)]);
+            createHearts();
+        }
+
+        function giveHug() {
+            const button = event.target;
+            addButtonAnimation(button);
+            showQuote(hugMessages[Math.floor(Math.random() * hugMessages.length)]);
+        }
+
+        function encouragement() {
+            const button = event.target;
+            addButtonAnimation(button);
+            showQuote(encouragementMessages[Math.floor(Math.random() * encouragementMessages.length)]);
+            chargeEnergy();
+        }
+
+        function playMusic() {
+            const button = event.target;
+            addButtonAnimation(button);
+            showQuote("🎵 เปิดเพลงเบาๆ ผ่อนคลายกันเถอะ 🎶");
+            for (let i = 0; i < 10; i++) {
+                setTimeout(createMusicNote, i * 500);
+            }
+        }
+
+        function restTime() {
+            const button = event.target;
+            addButtonAnimation(button);
+            showQuote("😴 ได้เวลาพักผ่อนแล้ว นอนหลับฝันดีนะฟ่าง 🌙");
+        }
+
+        function showQuote(message) {
+            const quotesSection = document.getElementById('quotesSection');
+            const currentQuote = document.getElementById('currentQuote');
+            
+            // ตั้งข้อความ
+            currentQuote.textContent = message;
+            
+            // สไลด์ออกมา
+            quotesSection.classList.remove('hide');
+            quotesSection.classList.add('show');
+            
+            // สไลด์กลับหลังจาก 5 วินาที
+            setTimeout(() => {
+                quotesSection.classList.remove('show');
+                quotesSection.classList.add('hide');
+            }, 5000);
+        }
+
+        function createHearts() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.textContent = '💕';
+                    heart.style.position = 'fixed';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.top = '100%';
+                    heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+                    heart.style.animation = 'musicFloat 3s linear forwards';
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => {
+                        if (document.body.contains(heart)) {
+                            document.body.removeChild(heart);
+                        }
+                    }, 3000);
+                }, i * 200);
+            }
+        }
+
+        function chargeEnergy() {
+            const energyFill = document.getElementById('energyFill');
+            let width = 0;
+            const interval = setInterval(() => {
+                width += 2;
+                energyFill.style.width = width + '%';
+                
+                if (width >= 100) {
+                    clearInterval(interval);
+                    energyFill.textContent = 'พลังงานเต็มแล้ว! 💪✨';
+                    setTimeout(() => {
+                        energyFill.style.width = '0%';
+                        energyFill.textContent = 'กำลังชาร์จพลังงาน... 🔋';
+                    }, 3000);
+                }
+            }, 50);
+        }
+
+        // เริ่มต้น
+        createStars();
+        
+        // สร้างโน้ตเพลงสุ่ม
+        setInterval(createMusicNote, 3000);
+
+        // ชาร์จพลังงานช้าๆ ตอนเริ่มต้น
+        setTimeout(() => {
+            const energyFill = document.getElementById('energyFill');
+            energyFill.style.width = '70%';
+            energyFill.textContent = 'กำลังใจจากคนที่รัก 💕';
+        }, 1000);
+    </script>
+</body>
+</html>
